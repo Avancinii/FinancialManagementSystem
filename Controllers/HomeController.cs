@@ -16,7 +16,7 @@ namespace Project.Controllers
         [HttpGet]
         public IActionResult Index(HomeModel form)
         {
-            LoadData();
+            ViewData["Nome"] = new HomeModel().LerNomeUsuario();
             return View();
         }
 

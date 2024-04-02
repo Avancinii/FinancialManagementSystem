@@ -1,26 +1,37 @@
-﻿namespace Project.Models
+﻿using Project.Util;
+using System.Data;
+
+namespace Project.Models
 {
     public class HomeModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Nome { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
+        public DateOnly Data_Nascimento { get; set; }
 
         public List<HomeModel> GetAll()
         {
             HomeModel model;
             List<HomeModel> list = new List<HomeModel>();
 
-            model = new HomeModel();
-            model.Id = 1;
-            model.Name = "Gustavo Avancini";
-            list.Add(model);
-
-            model = new HomeModel();
-            model.Id = 2;
-            model.Name = "Alexandre Fialho";
-            list.Add(model);
-
             return list;
+        }
+        public string LerNomeUsuario()
+        {
+            DAL dal = new DAL();
+            DataTable dt = dal.RetDataTable("select * from usuario");
+
+            if(dt != null)
+            {
+                if(dt.Rows.Count > 0)
+                {
+                    return dt.Rows[0]["Nome"].ToString();
+                }
+            }
+
+            return "Nome não encontrado";
         }
     }
 }

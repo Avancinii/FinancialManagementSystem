@@ -12,16 +12,10 @@
         <td>Id</td>
         <td>Name</td>
     </tr>
-
-@{
-    foreach(var item in (List<HomeModel>)ViewBag.List)
-    {
-            <tr>
-                <td>@item.Id.ToString()</td>
-                <td>@item.Name.ToString()</td>
-            </tr>
-    }
-}
+    <tr>
+        <td>1</td>
+        <td>@ViewData["Nome"].ToString()</td>
+    </tr>
 </table>
 
 <form asp-controller="Home" asp-action="Index" method="post">
