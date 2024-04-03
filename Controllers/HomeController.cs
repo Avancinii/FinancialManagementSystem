@@ -30,10 +30,5 @@ namespace Project.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public void LoadData()
-        {
-            HomeModel objHome = new HomeModel();
-            ViewBag.List = objHome.GetAll();
-        }
     }
 }

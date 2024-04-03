@@ -1,0 +1,32 @@
+﻿@model UsuarioModel
+
+
+
+<form asp-controller="Usuario" asp-action="ValidarLogin">
+    <div class="mb-3 mt-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control" asp-for="Email">
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Senha:</label>
+        <input type="password" class="form-control" asp-for="Senha">
+    </div>
+    @{
+        try
+        {
+            if (TempData["MensagemLoginInvalido"].ToString() != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["MensagemLoginInvalido"]
+                </div>
+            }
+        }
+        catch{ }
+    }    
+    <div class="form-check mb-3">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" name="remember"> Lembrar acesso
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

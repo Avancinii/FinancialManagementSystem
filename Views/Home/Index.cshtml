@@ -2,24 +2,15 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+    <div class="col-lg-6">
+        <a href="../Usuario/Login">        
+        <div class="d-grid">
+            <button type="button" class="btn btn-primary btn-block">Logar</button>
+        </div>
+        </a>
+    </div>
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-success">Registrar</button>
+    </div>
 </div>
-<table>
-    <tr>
-        <td>Id</td>
-        <td>Name</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>@ViewData["Nome"].ToString()</td>
-    </tr>
-</table>
-
-<form asp-controller="Home" asp-action="Index" method="post">
-    <input type="text" asp-for="Id" /><br />
-    <input type="text" asp-for="Name" /><br />
-    <input type="submit" value="OK" />
-</form>
