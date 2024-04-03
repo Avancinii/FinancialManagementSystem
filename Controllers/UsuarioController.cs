@@ -5,8 +5,17 @@ namespace Project.Controllers
 {
     public class UsuarioController : Controller
     {
-        public IActionResult Login()
+        [HttpGet]
+        public IActionResult Login(int? id)
         {
+            if(id != null)
+            {
+                if(id == 0)
+                {
+                    HttpContext.Session.SetString("NomeUsuarioLogado", string.Empty);
+                    HttpContext.Session.SetString("IdUsuarioLogado", string.Empty);
+                }
+            }
             return View();
         }
         [HttpPost]
@@ -15,6 +24,8 @@ namespace Project.Controllers
             bool login = usuario.ValidarLogin();
             if (login)
             {
+                HttpContext.Session.SetString("NomeUsuarioLogado", usuario.Nome);
+                HttpContext.Session.SetString("IdUsuarioLogado", usuario.Id.ToString());
                 return RedirectToAction("Index", "Home");
             }
             else

@@ -21,6 +21,9 @@ namespace Project.Models
             {
                 if(dt.Rows.Count == 1)
                 {
+                    Id = int.Parse(dt.Rows[0]["ID"].ToString());
+                    Nome = dt.Rows[0]["Nome"].ToString();
+                    Data_Nascimento = DateTime.Parse(dt.Rows[0]["Data_Nascimento"].ToString());
                     return true;
                 }
             }
